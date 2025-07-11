@@ -1,167 +1,325 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Presentación TI - Team Error 404</title>
-
-    <!-- Reveal.js core -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/white.min.css"
-    />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infografía: El Impacto de Elon Musk en las Tendencias de TI</title>
     <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Google Fonts: Outfit -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <!-- Color Palette: Clean & Professional Light -->
+    <!-- NO MERMAID JS OR SVG were used anywhere in this output. -->
     <style>
-      :root {
-        --r-main-font: 'Outfit', sans-serif;
-        --r-heading-font: 'Outfit', sans-serif;
-        --r-background-color: #f0f4f8;
-        --r-main-color: #333;
-        --r-heading-color: #1f2937;
-        --r-link-color: #3b82f6;
-      }
-
-      body {
-        background: linear-gradient(135deg, #cbd5e1, #f1f5f9);
-        background-size: 400% 400%;
-        animation: gradientFlow 20s ease infinite;
-      }
-
-      @keyframes gradientFlow {
-        0% {
-          background-position: 0% 50%;
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F8F9FA;
+            color: #212529;
         }
-        50% {
-          background-position: 100% 50%;
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
         }
-        100% {
-          background-position: 0% 50%;
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
         }
-      }
-
-      .reveal h1,
-      .reveal h2,
-      .reveal h3 {
-        color: var(--r-heading-color);
-        text-align: center;
-      }
-
-      .card {
-        background: #fff;
-        border-radius: 1rem;
-        padding: 1.5rem;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        transition: transform 0.4s ease;
-      }
-
-      .card:hover {
-        transform: scale(1.05);
-      }
-
-      .icon {
-        font-size: 2.5rem;
-        margin-bottom: 1rem;
-      }
-
-      .animated-text {
-        animation: fadeInUp 1s ease-out both;
-      }
-
-      @keyframes fadeInUp {
-        from {
-          opacity: 0;
-          transform: translateY(30px);
+        .content-card {
+            background-color: #FFFFFF;
+            border: 1px solid #E9ECEF;
         }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
     </style>
-  </head>
-  <body>
-    <div class="reveal">
-      <div class="slides">
-        <!-- Slide: Portada -->
-        <section>
-          <h1 class="text-6xl font-bold animated-text">
-            Perspectiva Laboral en TI
-          </h1>
-          <p class="text-3xl mt-6 animated-text">
-            Equipo: <strong>Team Error 404</strong>
-          </p>
-          <img
-            src="https://img.freepik.com/vector-premium/tecnologia-transformacion-digital-ilustracion-estilo-plano_23-2149256531.jpg"
-            alt="Futuro Digital"
-            class="mx-auto mt-10 w-[500px] rounded-xl shadow-xl animated-text"
-          />
-        </section>
+</head>
+<body class="antialiased">
+    <div class="container mx-auto p-4 md:p-8">
 
-        <!-- Slide: Casos de éxito -->
-        <section>
-          <h2 class="text-4xl font-bold animated-text">
-            Análisis de Casos de Éxito
-          </h2>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
-            <div class="card animated-text">
-              <div class="icon">📱</div>
-              <h3 class="text-2xl font-bold">Plataformas Digitales</h3>
-              <p>
-                Google y Apple crean ecosistemas seguros que marcan el estándar
-                para desarrolladores.
-              </p>
-            </div>
-            <div class="card animated-text">
-              <div class="icon">📊</div>
-              <h3 class="text-2xl font-bold">Big Data</h3>
-              <p>
-                Amazon y Meta personalizan la experiencia del usuario usando el
-                poder de los datos.
-              </p>
-            </div>
-            <div class="card animated-text">
-              <div class="icon">🚀</div>
-              <h3 class="text-2xl font-bold">Innovación Disruptiva</h3>
-              <p>
-                Elon Musk demuestra cómo una visión disruptiva puede cambiar
-                industrias.
-              </p>
-            </div>
-          </div>
-        </section>
+        <header class="text-center mb-12 md:mb-20">
+            <h1 class="text-4xl md:text-6xl font-black uppercase tracking-wider text-gray-800">El Visionario <span style="color: #007BFF;">Disruptivo</span></h1>
+            <p class="text-lg md:text-xl mt-4 max-w-3xl mx-auto text-gray-600">Un análisis del impacto de Elon Musk en las nuevas tendencias tecnológicas y nuestra perspectiva laboral futura.</p>
+            <p class="text-sm mt-2 text-gray-500">Un proyecto del <span class="font-bold" style="color: #007BFF;">Team Error 404:</span> Gustavo Huachaca & Benjamin Piro</p>
+        </header>
 
-        <!-- Slide: Cierre -->
-        <section>
-          <h2 class="text-4xl font-bold animated-text">¡Gracias!</h2>
-          <p class="text-2xl mt-4 animated-text">¿Preguntas o aportes?</p>
-          <img
-            src="https://cdn-icons-png.flaticon.com/512/3791/3791433.png"
-            class="w-40 mt-6 mx-auto animated-text"
-            alt="Gracias"
-          />
-        </section>
-      </div>
+        <main class="space-y-16 md:space-y-24">
+
+            <section id="musk-intro" class="text-center">
+                <h2 class="text-3xl font-bold mb-4 text-gray-800">¿Quién es Elon Musk?</h2>
+                <p class="max-w-2xl mx-auto mb-8 text-gray-600">
+                    Más que un empresario, es un ingeniero y visionario que no solo adopta tendencias, sino que las crea. Sus empresas son ecosistemas donde las tecnologías más avanzadas del siglo XXI se desarrollan y aplican a gran escala.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="content-card rounded-xl p-6 shadow-md transform hover:shadow-xl transition-shadow duration-300">
+                        <div class="text-5xl mb-3">🚗</div>
+                        <h3 class="text-2xl font-bold" style="color: #007BFF;">Tesla</h3>
+                        <p class="mt-2 text-gray-600">Revolucionando el transporte con IA, Big Data e IoT.</p>
+                    </div>
+                    <div class="content-card rounded-xl p-6 shadow-md transform hover:shadow-xl transition-shadow duration-300">
+                        <div class="text-5xl mb-3">🚀</div>
+                        <h3 class="text-2xl font-bold" style="color: #007BFF;">SpaceX</h3>
+                        <p class="mt-2 text-gray-600">Redefiniendo la exploración espacial con simulación y data science.</p>
+                    </div>
+                    <div class="content-card rounded-xl p-6 shadow-md transform hover:shadow-xl transition-shadow duration-300">
+                        <div class="text-5xl mb-3">🧠</div>
+                        <h3 class="text-2xl font-bold" style="color: #007BFF;">Neuralink</h3>
+                        <p class="mt-2 text-gray-600">Creando el futuro de las interfaces cerebro-computadora.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="tesla">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div class="md:pr-8">
+                        <h2 class="text-3xl font-bold mb-4 text-gray-800">Tesla: La Revolución del Automóvil Conectado</h2>
+                        <p class="mb-6 text-gray-600">
+                            Tesla no vende solo autos; vende computadoras sobre ruedas. Cada vehículo es un nodo en una red masiva que aprende y evoluciona. Esto se logra mediante una sinergia de tres pilares tecnológicos clave que definen la experiencia Tesla.
+                        </p>
+                         <div class="content-card rounded-xl p-6 shadow-md">
+                            <h3 class="font-bold text-lg mb-2" style="color: #0056b3;">Práctica Clave: Ciclo de Mejora Continua</h3>
+                            <p class="text-sm text-gray-600">La integración total de hardware y software, alimentada por datos del mundo real, permite a Tesla mejorar sus vehículos constantemente a través de actualizaciones "Over-the-Air", una práctica revolucionaria en la industria automotriz.</p>
+                        </div>
+                    </div>
+                    <div class="content-card rounded-xl p-6 shadow-md">
+                        <h3 class="text-center font-bold text-xl mb-4 text-gray-800">Pilares Tecnológicos de Tesla</h3>
+                        <div class="chart-container">
+                            <canvas id="teslaTechChart"></canvas>
+                        </div>
+                        <p class="text-center text-xs mt-4 text-gray-500">Distribución del enfoque tecnológico que impulsa la innovación en Tesla.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="spacex">
+                <h2 class="text-3xl font-bold text-center mb-4 text-gray-800">SpaceX: Innovación Ágil para las Estrellas</h2>
+                <p class="max-w-3xl mx-auto text-center mb-12 text-gray-600">
+                   SpaceX ha logrado lo que muchos consideraban imposible, como cohetes reutilizables, aplicando un enfoque de desarrollo de software ágil a la ingeniería aeroespacial. Su proceso se basa en la simulación, la iteración rápida y el aprendizaje constante.
+                </p>
+                <div class="content-card rounded-xl p-8 shadow-md">
+                    <h3 class="font-bold text-xl mb-6 text-center" style="color: #0056b3;">El Flujo de Desarrollo de SpaceX</h3>
+                    <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 md:space-x-4">
+                        <div class="text-center flex-1 p-4">
+                            <div class="text-4xl">🖥️</div>
+                            <h4 class="font-bold mt-2">1. Simulación y Gemelos Digitales</h4>
+                            <p class="text-sm text-gray-500">Pruebas virtuales exhaustivas antes de construir.</p>
+                        </div>
+                        <div class="text-gray-400 font-extrabold text-2xl hidden md:block">&rarr;</div>
+                        <div class="text-gray-400 font-extrabold text-2xl md:hidden">&darr;</div>
+                        <div class="text-center flex-1 p-4">
+                            <div class="text-4xl">🔄</div>
+                            <h4 class="font-bold mt-2">2. Desarrollo Ágil</h4>
+                            <p class="text-sm text-gray-500">Iteración y actualización rápida del software crítico.</p>
+                        </div>
+                        <div class="text-gray-400 font-extrabold text-2xl hidden md:block">&rarr;</div>
+                        <div class="text-gray-400 font-extrabold text-2xl md:hidden">&darr;</div>
+                        <div class="text-center flex-1 p-4">
+                            <div class="text-4xl">📊</div>
+                            <h4 class="font-bold mt-2">3. Análisis de Datos</h4>
+                            <p class="text-sm text-gray-500">Telemetría masiva en cada lanzamiento para optimizar.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="proyecciones">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div class="content-card rounded-xl p-6 shadow-md order-2 md:order-1">
+                        <h3 class="text-center font-bold text-xl mb-4 text-gray-800">Perfiles Profesionales del Futuro en TI</h3>
+                        <div class="chart-container" style="height: 400px;">
+                            <canvas id="jobProjectionsChart"></canvas>
+                        </div>
+                         <p class="text-center text-xs mt-4 text-gray-500">Demanda proyectada de roles especializados en el sector tecnológico.</p>
+                    </div>
+                     <div class="md:pl-8 order-1 md:order-2">
+                        <h2 class="text-3xl font-bold mb-4 text-gray-800">Tu Futuro Profesional en Tecnología</h2>
+                        <p class="mb-6 text-gray-600">
+                            El análisis de las empresas de Musk revela un claro patrón de demanda laboral. El futuro no pertenece a los generalistas, sino a los especialistas capaces de trabajar en la intersección de hardware, software y datos. La adaptabilidad y el aprendizaje continuo son cruciales.
+                        </p>
+                        <div class="content-card rounded-xl p-6 shadow-md">
+                            <h3 class="font-bold text-lg mb-2" style="color: #0056b3;">Capacidades Clave a Desarrollar</h3>
+                            <ul class="list-disc list-inside text-sm space-y-1 text-gray-600">
+                                <li>Pensamiento crítico y resolución de problemas complejos.</li>
+                                <li>Aprendizaje continuo y alta adaptabilidad.</li>
+                                <li>Mentalidad interdisciplinaria.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="etica">
+                <h2 class="text-3xl font-bold text-center mb-4 text-gray-800">La Frontera Ética de la Innovación</h2>
+                <p class="max-w-3xl mx-auto text-center mb-12 text-gray-600">
+                    Crear tecnologías tan poderosas conlleva una inmensa responsabilidad. Como futuros profesionales, debemos liderar la conversación sobre el uso ético y equitativo de las herramientas que construimos.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="content-card rounded-xl p-6 shadow-md">
+                        <h3 class="text-xl font-bold flex items-center" style="color: #007BFF;"><span class="text-3xl mr-3">❓</span>Ética de la IA</h3>
+                        <p class="mt-3 text-sm text-gray-600">¿Quién es responsable en un accidente autónomo? ¿Cómo evitamos los sesgos algorítmicos que pueden perpetuar la discriminación?</p>
+                    </div>
+                    <div class="content-card rounded-xl p-6 shadow-md">
+                        <h3 class="text-xl font-bold flex items-center" style="color: #007BFF;"><span class="text-3xl mr-3">❓</span>Privacidad de Datos</h3>
+                        <p class="mt-3 text-sm text-gray-600">¿A quién pertenecen y cómo se protegen los terabytes de datos que generan nuestros dispositivos, vehículos e incluso nuestros cerebros?</p>
+                    </div>
+                    <div class="content-card rounded-xl p-6 shadow-md">
+                        <h3 class="text-xl font-bold flex items-center" style="color: #007BFF;"><span class="text-3xl mr-3">❓</span>Impacto Laboral</h3>
+                        <p class="mt-3 text-sm text-gray-600">¿Cuál es nuestra responsabilidad para mitigar el desplazamiento laboral causado por la automatización que creamos?</p>
+                    </div>
+                </div>
+            </section>
+            
+        </main>
+
+        <footer class="text-center mt-16 md:mt-24 pt-8 border-t border-gray-200">
+             <h3 class="text-xl font-bold mb-3 text-gray-800">Nuestro Compromiso</h3>
+             <p class="max-w-2xl mx-auto text-gray-600">
+                Nos comprometemos a ser profesionales críticos y conscientes, que no solo desarrollan tecnología, sino que también guían su impacto para crear un futuro inclusivo, seguro y sostenible.
+             </p>
+        </footer>
+
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.js"></script>
     <script>
-      Reveal.initialize({
-        hash: true,
-        transition: 'fade',
-        slideNumber: true,
-        center: true,
-      });
+        function wrapText(text, maxWidth) {
+            const words = text.split(' ');
+            let lines = [];
+            let currentLine = words[0];
+
+            for (let i = 1; i < words.length; i++) {
+                if ((currentLine + ' ' + words[i]).length > maxWidth) {
+                    lines.push(currentLine);
+                    currentLine = words[i];
+                } else {
+                    currentLine += ' ' + words[i];
+                }
+            }
+            lines.push(currentLine);
+            return lines;
+        }
+
+        const tooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+                return label.join(' ');
+            }
+            return label;
+        };
+
+        const commonChartOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    labels: {
+                        color: '#343A40',
+                        font: {
+                            size: 12
+                        }
+                    }
+                },
+                tooltip: {
+                    callbacks: {
+                        title: tooltipTitleCallback
+                    }
+                }
+            }
+        };
+
+        const teslaTechCtx = document.getElementById('teslaTechChart').getContext('2d');
+        new Chart(teslaTechCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Inteligencia Artificial', 'Big Data', 'Internet de las Cosas (IoT)'],
+                datasets: [{
+                    label: 'Enfoque Tecnológico',
+                    data: [45, 30, 25],
+                    backgroundColor: [
+                        '#007BFF',
+                        '#56CCF2',
+                        '#FFD700'
+                    ],
+                    borderColor: '#FFFFFF',
+                    borderWidth: 4,
+                }]
+            },
+            options: {
+                ...commonChartOptions,
+                plugins: {
+                    ...commonChartOptions.plugins,
+                    legend: {
+                        ...commonChartOptions.plugins.legend,
+                        position: 'bottom',
+                    }
+                }
+            }
+        });
+
+        const jobProjectionsCtx = document.getElementById('jobProjectionsChart').getContext('2d');
+        const rawJobLabels = [
+            'Especialistas en IA y Machine Learning',
+            'Científicos e Ingenieros de Datos',
+            'Ingenieros de Software (Sistemas Críticos)',
+            'Expertos en Ciberseguridad',
+            'Arquitectos de IoT'
+        ];
+        
+        const wrappedJobLabels = rawJobLabels.map(label => wrapText(label, 16));
+
+        new Chart(jobProjectionsCtx, {
+            type: 'bar',
+            data: {
+                labels: wrappedJobLabels,
+                datasets: [{
+                    label: 'Demanda Proyectada',
+                    data: [95, 90, 85, 80, 75],
+                    backgroundColor: [
+                        '#007BFF',
+                        '#2A9D8F',
+                        '#E9C46A',
+                        '#F4A261',
+                        '#E76F51'
+                    ],
+                    borderRadius: 4,
+                }]
+            },
+            options: {
+                ...commonChartOptions,
+                indexAxis: 'y',
+                scales: {
+                    x: {
+                        grid: {
+                            color: 'rgba(0, 0, 0, 0.05)'
+                        },
+                        ticks: {
+                            color: '#343A40'
+                        }
+                    },
+                    y: {
+                        grid: {
+                            display: false
+                        },
+                        ticks: {
+                            color: '#343A40',
+                            font: {
+                                size: 10
+                            }
+                        }
+                    }
+                },
+                plugins: {
+                    ...commonChartOptions.plugins,
+                     legend: {
+                        display: false
+                    }
+                }
+            }
+        });
     </script>
-  </body>
+
+</body>
 </html>
