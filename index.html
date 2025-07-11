@@ -42,7 +42,7 @@
             }
         }
         .content-card {
-            background-color: rgba(0, 0, 0, 0.3);
+            background-color: rgba(0, 0, 0, 0.25);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
@@ -54,18 +54,22 @@
 
         <header class="text-center mb-12 md:mb-20">
             <img src="elon.png" alt="Fotografía de Elon Musk" class="mx-auto mb-6 rounded-full shadow-xl border-4 border-gray-600 w-[150px] h-[150px] object-cover" onerror="this.onerror=null;this.src='https://placehold.co/150x150/e2ebf0/34495e?text=Error';">
-            <h1 class="text-4xl md:text-6xl font-extrabold uppercase tracking-wider text-gray-100">El Visionario <span style="color: #3A86FF;">Disruptivo</span></h1>
-            <p class="text-lg md:text-xl mt-4 max-w-3xl mx-auto text-gray-300">Un análisis del impacto de Elon Musk en las nuevas tendencias tecnológicas y nuestra perspectiva laboral futura.</p>
-            <p class="text-sm mt-2 text-gray-400">Un proyecto del <span class="font-bold" style="color: #3A86FF;">Team Error 404:</span> Gustavo Huachaca & Benjamin Piro</p>
+            <div class="content-card rounded-xl p-6 shadow-lg">
+                <h1 class="text-4xl md:text-6xl font-extrabold uppercase tracking-wider text-gray-100">El Visionario <span style="color: #3A86FF;">Disruptivo</span></h1>
+                <p class="text-lg md:text-xl mt-4 max-w-3xl mx-auto text-gray-300">Un análisis del impacto de Elon Musk en las nuevas tendencias tecnológicas y nuestra perspectiva laboral futura.</p>
+                <p class="text-sm mt-2 text-gray-400">Un proyecto del <span class="font-bold" style="color: #3A86FF;">Team Error 404:</span> Gustavo Huachaca & Benjamin Piro</p>
+            </div>
         </header>
 
         <main class="space-y-16 md:space-y-24">
 
             <section id="musk-intro" class="text-center">
-                <h2 class="text-3xl font-bold mb-4 text-gray-200">¿Quién es Elon Musk?</h2>
-                <p class="max-w-2xl mx-auto mb-8 text-gray-300">
-                    Más que un empresario, es un ingeniero y visionario que no solo adopta tendencias, sino que las crea. Sus empresas son ecosistemas donde las tecnologías más avanzadas del siglo XXI se desarrollan y aplican a gran escala.
-                </p>
+                 <div class="content-card rounded-xl p-6 shadow-lg mb-8">
+                    <h2 class="text-3xl font-bold mb-4 text-gray-200">¿Quién es Elon Musk?</h2>
+                    <p class="max-w-2xl mx-auto text-gray-300">
+                        Más que un empresario, es un ingeniero y visionario que no solo adopta tendencias, sino que las crea. Sus empresas son ecosistemas donde las tecnologías más avanzadas del siglo XXI se desarrollan y aplican a gran escala.
+                    </p>
+                </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <div class="content-card rounded-xl p-6 shadow-lg transform hover:scale-105 transition-transform duration-300">
                         <div class="text-5xl mb-3">🚗</div>
@@ -87,12 +91,12 @@
             
             <section id="tesla">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                    <div class="md:pr-8">
+                    <div class="content-card rounded-xl p-6 shadow-lg">
                         <h2 class="text-3xl font-bold mb-4 text-gray-200">Tesla: La Revolución del Automóvil Conectado</h2>
                         <p class="mb-6 text-gray-300">
                             Tesla no vende solo autos; vende computadoras sobre ruedas. Cada vehículo es un nodo en una red masiva que aprende y evoluciona. Esto se logra mediante una sinergia de tres pilares tecnológicos clave que definen la experiencia Tesla.
                         </p>
-                         <div class="content-card rounded-xl p-6 shadow-lg">
+                         <div class="bg-black/20 rounded-xl p-6 shadow-inner">
                             <h3 class="font-bold text-lg mb-2" style="color: #89c3ff;">Práctica Clave: Ciclo de Mejora Continua</h3>
                             <p class="text-sm text-gray-300">La integración total de hardware y software, alimentada por datos del mundo real, permite a Tesla mejorar sus vehículos constantemente a través de actualizaciones "Over-the-Air", una práctica revolucionaria en la industria automotriz.</p>
                         </div>
@@ -108,10 +112,12 @@
             </section>
             
             <section id="spacex">
-                <h2 class="text-3xl font-bold text-center mb-4 text-gray-200">SpaceX: Innovación Ágil para las Estrellas</h2>
-                <p class="max-w-3xl mx-auto text-center mb-12 text-gray-300">
-                   SpaceX ha logrado lo que muchos consideraban imposible, como cohetes reutilizables, aplicando un enfoque de desarrollo de software ágil a la ingeniería aeroespacial. Su proceso se basa en la simulación, la iteración rápida y el aprendizaje constante.
-                </p>
+                <div class="content-card rounded-xl p-6 shadow-lg mb-8">
+                    <h2 class="text-3xl font-bold text-center mb-4 text-gray-200">SpaceX: Innovación Ágil para las Estrellas</h2>
+                    <p class="max-w-3xl mx-auto text-center text-gray-300">
+                       SpaceX ha logrado lo que muchos consideraban imposible, como cohetes reutilizables, aplicando un enfoque de desarrollo de software ágil a la ingeniería aeroespacial. Su proceso se basa en la simulación, la iteración rápida y el aprendizaje constante.
+                    </p>
+                </div>
                 <div class="content-card rounded-xl p-8 shadow-lg">
                     <h3 class="font-bold text-xl mb-6 text-center" style="color: #89c3ff;">El Flujo de Desarrollo de SpaceX</h3>
                     <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 md:space-x-4">
@@ -147,12 +153,12 @@
                         </div>
                          <p class="text-center text-xs mt-4 text-gray-400">Demanda proyectada de roles especializados en el sector tecnológico.</p>
                     </div>
-                     <div class="md:pl-8 order-1 md:order-2">
+                     <div class="content-card rounded-xl p-6 shadow-lg order-1 md:order-2">
                         <h2 class="text-3xl font-bold mb-4 text-gray-200">Tu Futuro Profesional en Tecnología</h2>
                         <p class="mb-6 text-gray-300">
                             El análisis de las empresas de Musk revela un claro patrón de demanda laboral. El futuro no pertenece a los generalistas, sino a los especialistas capaces de trabajar en la intersección de hardware, software y datos. La adaptabilidad y el aprendizaje continuo son cruciales.
                         </p>
-                        <div class="content-card rounded-xl p-6 shadow-lg">
+                        <div class="bg-black/20 rounded-xl p-6 shadow-inner">
                             <h3 class="font-bold text-lg mb-2" style="color: #89c3ff;">Capacidades Clave a Desarrollar</h3>
                             <ul class="list-disc list-inside text-sm space-y-1 text-gray-300">
                                 <li>Pensamiento crítico y resolución de problemas complejos.</li>
@@ -165,10 +171,12 @@
             </section>
 
             <section id="etica">
-                <h2 class="text-3xl font-bold text-center mb-4 text-gray-200">La Frontera Ética de la Innovación</h2>
-                <p class="max-w-3xl mx-auto text-center mb-12 text-gray-300">
-                    Crear tecnologías tan poderosas conlleva una inmensa responsabilidad. Como futuros profesionales, debemos liderar la conversación sobre el uso ético y equitativo de las herramientas que construimos.
-                </p>
+                 <div class="content-card rounded-xl p-6 shadow-lg mb-8">
+                    <h2 class="text-3xl font-bold text-center mb-4 text-gray-200">La Frontera Ética de la Innovación</h2>
+                    <p class="max-w-3xl mx-auto text-center text-gray-300">
+                        Crear tecnologías tan poderosas conlleva una inmensa responsabilidad. Como futuros profesionales, debemos liderar la conversación sobre el uso ético y equitativo de las herramientas que construimos.
+                    </p>
+                </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <div class="content-card rounded-xl p-6 shadow-lg">
                         <h3 class="text-xl font-bold flex items-center" style="color: #3A86FF;"><span class="text-3xl mr-3">🤖</span>Ética de la IA</h3>
@@ -188,17 +196,19 @@
         </main>
 
         <footer class="text-center mt-16 md:mt-24 pt-8 border-t border-gray-700">
-             <h3 class="text-xl font-bold mb-3 text-gray-200">Nuestro Compromiso</h3>
-             <p class="max-w-2xl mx-auto text-gray-300 mb-8">
-                Nos comprometemos a ser profesionales críticos y conscientes, que no solo desarrollan tecnología, sino que también guían su impacto para crear un futuro inclusivo, seguro y sostenible.
-             </p>
-             <div class="text-left max-w-2xl mx-auto">
-                <h4 class="text-lg font-bold mb-2 text-gray-200">Fuentes de Información</h4>
-                <ul class="list-disc list-inside text-sm text-gray-300 space-y-1">
-                    <li>Vance, A. (2015). *Elon Musk: Tesla, SpaceX, and the Quest for a Fantastic Future*. Ecco Press.</li>
-                    <li>Sitios web oficiales de Tesla, Inc., y Space Exploration Technologies Corp. (SpaceX).</li>
-                    <li>Artículos y análisis de publicaciones como *Wired*, *MIT Technology Review*, y *Bloomberg*.</li>
-                </ul>
+             <div class="content-card rounded-xl p-6 shadow-lg">
+                <h3 class="text-xl font-bold mb-3 text-gray-200">Nuestro Compromiso</h3>
+                <p class="max-w-2xl mx-auto text-gray-300 mb-8">
+                    Nos comprometemos a ser profesionales críticos y conscientes, que no solo desarrollan tecnología, sino que también guían su impacto para crear un futuro inclusivo, seguro y sostenible.
+                </p>
+                <div class="text-left max-w-2xl mx-auto">
+                    <h4 class="text-lg font-bold mb-2 text-gray-200">Fuentes de Información</h4>
+                    <ul class="list-disc list-inside text-sm text-gray-300 space-y-1">
+                        <li>Vance, A. (2015). *Elon Musk: Tesla, SpaceX, and the Quest for a Fantastic Future*. Ecco Press.</li>
+                        <li>Sitios web oficiales de Tesla, Inc., y Space Exploration Technologies Corp. (SpaceX).</li>
+                        <li>Artículos y análisis de publicaciones como *Wired*, *MIT Technology Review*, y *Bloomberg*.</li>
+                    </ul>
+                </div>
              </div>
         </footer>
 
@@ -281,7 +291,7 @@
                         '#8338EC',
                         '#FFBE0B'
                     ],
-                    borderColor: 'rgba(0, 0, 0, 0.3)',
+                    borderColor: 'rgba(0, 0, 0, 0.25)',
                     borderWidth: 4,
                 }]
             },
