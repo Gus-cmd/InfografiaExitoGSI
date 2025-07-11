@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Presentación TI - Team Error 404</title>
+
+    <!-- Reveal.js core -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/white.min.css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts: Outfit -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --r-main-font: 'Outfit', sans-serif;
+        --r-heading-font: 'Outfit', sans-serif;
+        --r-background-color: #f0f4f8;
+        --r-main-color: #333;
+        --r-heading-color: #1f2937;
+        --r-link-color: #3b82f6;
+      }
+
+      body {
+        background: linear-gradient(135deg, #cbd5e1, #f1f5f9);
+        background-size: 400% 400%;
+        animation: gradientFlow 20s ease infinite;
+      }
+
+      @keyframes gradientFlow {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      .reveal h1,
+      .reveal h2,
+      .reveal h3 {
+        color: var(--r-heading-color);
+        text-align: center;
+      }
+
+      .card {
+        background: #fff;
+        border-radius: 1rem;
+        padding: 1.5rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        transition: transform 0.4s ease;
+      }
+
+      .card:hover {
+        transform: scale(1.05);
+      }
+
+      .icon {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .animated-text {
+        animation: fadeInUp 1s ease-out both;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <!-- Slide: Portada -->
+        <section>
+          <h1 class="text-6xl font-bold animated-text">
+            Perspectiva Laboral en TI
+          </h1>
+          <p class="text-3xl mt-6 animated-text">
+            Equipo: <strong>Team Error 404</strong>
+          </p>
+          <img
+            src="https://img.freepik.com/vector-premium/tecnologia-transformacion-digital-ilustracion-estilo-plano_23-2149256531.jpg"
+            alt="Futuro Digital"
+            class="mx-auto mt-10 w-[500px] rounded-xl shadow-xl animated-text"
+          />
+        </section>
+
+        <!-- Slide: Casos de éxito -->
+        <section>
+          <h2 class="text-4xl font-bold animated-text">
+            Análisis de Casos de Éxito
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+            <div class="card animated-text">
+              <div class="icon">📱</div>
+              <h3 class="text-2xl font-bold">Plataformas Digitales</h3>
+              <p>
+                Google y Apple crean ecosistemas seguros que marcan el estándar
+                para desarrolladores.
+              </p>
+            </div>
+            <div class="card animated-text">
+              <div class="icon">📊</div>
+              <h3 class="text-2xl font-bold">Big Data</h3>
+              <p>
+                Amazon y Meta personalizan la experiencia del usuario usando el
+                poder de los datos.
+              </p>
+            </div>
+            <div class="card animated-text">
+              <div class="icon">🚀</div>
+              <h3 class="text-2xl font-bold">Innovación Disruptiva</h3>
+              <p>
+                Elon Musk demuestra cómo una visión disruptiva puede cambiar
+                industrias.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide: Cierre -->
+        <section>
+          <h2 class="text-4xl font-bold animated-text">¡Gracias!</h2>
+          <p class="text-2xl mt-4 animated-text">¿Preguntas o aportes?</p>
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/3791/3791433.png"
+            class="w-40 mt-6 mx-auto animated-text"
+            alt="Gracias"
+          />
+        </section>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.js"></script>
+    <script>
+      Reveal.initialize({
+        hash: true,
+        transition: 'fade',
+        slideNumber: true,
+        center: true,
+      });
+    </script>
+  </body>
+</html>
