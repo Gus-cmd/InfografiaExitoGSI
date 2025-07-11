@@ -46,6 +46,30 @@
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
+        #gemini-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 50;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .loading-spinner {
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top: 4px solid #3A86FF;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -53,7 +77,7 @@
     <div class="container mx-auto p-4 md:p-8 relative z-10">
 
         <header class="text-center mb-12 md:mb-20">
-            <img src="elon.png" alt="Fotografía de Elon Musk" class="mx-auto mb-6 rounded-full shadow-xl border-4 border-gray-600 w-[150px] h-[150px] object-cover" onerror="this.onerror=null;this.src='https://placehold.co/150x150/e2ebf0/34495e?text=Error';">
+            <img src="http://googleusercontent.com/file_content/1" alt="Fotografía de Elon Musk" class="mx-auto mb-6 rounded-full shadow-xl border-4 border-gray-600 w-[150px] h-[150px] object-cover" onerror="this.onerror=null;this.src='https://placehold.co/150x150/e2ebf0/34495e?text=Error';">
             <div class="content-card rounded-xl p-6 shadow-lg">
                 <h1 class="text-4xl md:text-6xl font-extrabold uppercase tracking-wider text-gray-100">El Visionario <span style="color: #3A86FF;">Disruptivo</span></h1>
                 <p class="text-lg md:text-xl mt-4 max-w-3xl mx-auto text-gray-300">Un análisis del impacto de Elon Musk en las nuevas tendencias tecnológicas y nuestra perspectiva laboral futura.</p>
@@ -159,12 +183,12 @@
                             El análisis de las empresas de Musk revela un claro patrón de demanda laboral. El futuro no pertenece a los generalistas, sino a los especialistas capaces de trabajar en la intersección de hardware, software y datos. La adaptabilidad y el aprendizaje continuo son cruciales.
                         </p>
                         <div class="bg-black/20 rounded-xl p-6 shadow-inner">
-                            <h3 class="font-bold text-lg mb-2" style="color: #89c3ff;">Capacidades Clave a Desarrollar</h3>
-                            <ul class="list-disc list-inside text-sm space-y-1 text-gray-300">
-                                <li>Pensamiento crítico y resolución de problemas complejos.</li>
-                                <li>Aprendizaje continuo y alta adaptabilidad.</li>
-                                <li>Mentalidad interdisciplinaria.</li>
-                            </ul>
+                            <h3 class="font-bold text-lg mb-2" style="color: #89c3ff;">✨ Capacidades Clave a Desarrollar</h3>
+                            <div class="space-y-2 mt-4">
+                                <button onclick="generateLearningPath('Pensamiento crítico y resolución de problemas complejos')" class="w-full text-left p-2 bg-blue-500/20 hover:bg-blue-500/40 rounded transition-colors">Pensamiento crítico y resolución de problemas complejos</button>
+                                <button onclick="generateLearningPath('Aprendizaje continuo y alta adaptabilidad')" class="w-full text-left p-2 bg-blue-500/20 hover:bg-blue-500/40 rounded transition-colors">Aprendizaje continuo y alta adaptabilidad</button>
+                                <button onclick="generateLearningPath('Mentalidad interdisciplinaria')" class="w-full text-left p-2 bg-blue-500/20 hover:bg-blue-500/40 rounded transition-colors">Mentalidad interdisciplinaria</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -178,17 +202,20 @@
                     </p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="content-card rounded-xl p-6 shadow-lg">
+                    <div class="content-card rounded-xl p-6 shadow-lg flex flex-col">
                         <h3 class="text-xl font-bold flex items-center" style="color: #3A86FF;"><span class="text-3xl mr-3">🤖</span>Ética de la IA</h3>
-                        <p class="mt-3 text-sm text-gray-300">¿Quién es responsable en un accidente autónomo? ¿Cómo evitamos los sesgos algorítmicos que pueden perpetuar la discriminación?</p>
+                        <p class="mt-3 text-sm text-gray-300 flex-grow">¿Quién es responsable en un accidente autónomo? ¿Cómo evitamos los sesgos algorítmicos que pueden perpetuar la discriminación?</p>
+                        <button onclick="exploreDilemma('Ética de la IA')" class="mt-4 p-2 bg-purple-500/20 hover:bg-purple-500/40 rounded transition-colors text-sm">✨ Explora el Dilema</button>
                     </div>
-                    <div class="content-card rounded-xl p-6 shadow-lg">
+                    <div class="content-card rounded-xl p-6 shadow-lg flex flex-col">
                         <h3 class="text-xl font-bold flex items-center" style="color: #3A86FF;"><span class="text-3xl mr-3">🔒</span>Privacidad de Datos</h3>
-                        <p class="mt-3 text-sm text-gray-300">¿A quién pertenecen y cómo se protegen los terabytes de datos que generan nuestros dispositivos, vehículos e incluso nuestros cerebros?</p>
+                        <p class="mt-3 text-sm text-gray-300 flex-grow">¿A quién pertenecen y cómo se protegen los terabytes de datos que generan nuestros dispositivos, vehículos e incluso nuestros cerebros?</p>
+                        <button onclick="exploreDilemma('Privacidad de Datos')" class="mt-4 p-2 bg-purple-500/20 hover:bg-purple-500/40 rounded transition-colors text-sm">✨ Explora el Dilema</button>
                     </div>
-                    <div class="content-card rounded-xl p-6 shadow-lg">
+                    <div class="content-card rounded-xl p-6 shadow-lg flex flex-col">
                         <h3 class="text-xl font-bold flex items-center" style="color: #3A86FF;"><span class="text-3xl mr-3">🧑‍💼</span>Impacto Laboral</h3>
-                        <p class="mt-3 text-sm text-gray-300">¿Cuál es nuestra responsabilidad para mitigar el desplazamiento laboral causado por la automatización que creamos?</p>
+                        <p class="mt-3 text-sm text-gray-300 flex-grow">¿Cuál es nuestra responsabilidad para mitigar el desplazamiento laboral causado por la automatización que creamos?</p>
+                        <button onclick="exploreDilemma('Impacto Laboral por Automatización')" class="mt-4 p-2 bg-purple-500/20 hover:bg-purple-500/40 rounded transition-colors text-sm">✨ Explora el Dilema</button>
                     </div>
                 </div>
             </section>
@@ -214,6 +241,19 @@
 
     </div>
 
+    <!-- Gemini Modal -->
+    <div id="gemini-modal">
+        <div class="content-card rounded-xl p-8 shadow-2xl w-11/12 md:w-1/2 max-w-2xl relative">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white">&times;</button>
+            <h3 id="modal-title" class="text-2xl font-bold mb-4" style="color: #89c3ff;"></h3>
+            <div id="modal-content" class="text-gray-300 space-y-4">
+                <div class="flex justify-center items-center h-32">
+                    <div class="loading-spinner"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
         VANTA.NET({
             el: "#vanta-bg",
@@ -230,6 +270,63 @@
             maxDistance: 20.00,
             spacing: 15.00
         });
+
+        const modal = document.getElementById('gemini-modal');
+        const modalTitle = document.getElementById('modal-title');
+        const modalContent = document.getElementById('modal-content');
+
+        function showModal() {
+            modal.style.display = 'flex';
+        }
+
+        function closeModal() {
+            modal.style.display = 'none';
+        }
+
+        async function callGeminiAPI(prompt) {
+            modalTitle.innerText = "Generando Respuesta...";
+            modalContent.innerHTML = `<div class="flex justify-center items-center h-32"><div class="loading-spinner"></div></div>`;
+            showModal();
+
+            let chatHistory = [{ role: "user", parts: [{ text: prompt }] }];
+            const payload = { contents: chatHistory };
+            const apiKey = "AIzaSyDi-ATXfiCbLNS2Cz9bioYrL27szZl1KeQ"; 
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+            try {
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                const result = await response.json();
+                if (result.candidates && result.candidates.length > 0 &&
+                    result.candidates[0].content && result.candidates[0].content.parts &&
+                    result.candidates[0].content.parts.length > 0) {
+                    const text = result.candidates[0].content.parts[0].text;
+                    modalContent.innerHTML = text.replace(/\n/g, '<br>');
+                } else {
+                    modalContent.innerText = "No se pudo generar una respuesta. Por favor, inténtalo de nuevo.";
+                    console.error("Unexpected API response structure:", result);
+                }
+            } catch (error) {
+                modalContent.innerText = "Error al conectar con la API. Revisa la consola para más detalles.";
+                console.error("API call failed:", error);
+            }
+        }
+
+        function generateLearningPath(skill) {
+            modalTitle.innerText = `Ruta de Aprendizaje: ${skill}`;
+            const prompt = `Actúa como un orientador profesional experto en tecnología. Para la habilidad clave '${skill}', genera un plan de aprendizaje conciso para un estudiante de TI. El plan debe incluir: 1. Tres habilidades técnicas específicas a dominar. 2. Dos proyectos prácticos sugeridos para desarrollar esta capacidad. 3. Una recomendación de libro o recurso en línea. Formatea la respuesta en Markdown simple con títulos en negrita.`;
+            callGeminiAPI(prompt);
+        }
+
+        function exploreDilemma(topic) {
+            modalTitle.innerText = `Dilema Ético: ${topic}`;
+            const prompt = `Actúa como un filósofo de la tecnología. Genera un breve y provocador escenario de dilema ético relacionado con '${topic}'. El escenario debe presentar una decisión difícil sin una respuesta fácil. No ofrezcas una solución, solo presenta el dilema de forma clara y concisa en menos de 120 palabras.`;
+            callGeminiAPI(prompt);
+        }
+
 
         function wrapText(text, maxWidth) {
             const words = text.split(' ');
