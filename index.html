@@ -221,6 +221,18 @@
                 </div>
             </section>
             
+            <section id="quiz">
+                <div class="content-card rounded-xl p-8 shadow-lg text-center">
+                    <h2 class="text-3xl font-bold mb-4 text-gray-200">🧠 Quiz del Visionario</h2>
+                    <p class="max-w-xl mx-auto text-gray-300 mb-6">
+                        ¿Crees que has prestado atención? ¡Pon a prueba tus conocimientos sobre el universo de Elon Musk y las tendencias tecnológicas con este breve quiz!
+                    </p>
+                    <button onclick="startQuiz()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-colors shadow-lg">
+                        Iniciar Quiz
+                    </button>
+                </div>
+            </section>
+
         </main>
 
         <footer class="text-center mt-16 md:mt-24 pt-8 border-t border-gray-700">
@@ -245,11 +257,13 @@
     <!-- Gemini Modal -->
     <div id="gemini-modal">
         <div class="content-card rounded-xl p-8 shadow-2xl w-11/12 md:w-1/2 max-w-2xl relative">
-            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white">&times;</button>
-            <h3 id="modal-title" class="text-2xl font-bold mb-4" style="color: #89c3ff;"></h3>
-            <div id="modal-content" class="text-gray-300 space-y-4">
-                <div class="flex justify-center items-center h-32">
-                    <div class="loading-spinner"></div>
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl font-bold">&times;</button>
+            <div id="modal-container">
+                <h3 id="modal-title" class="text-2xl font-bold mb-4" style="color: #89c3ff;"></h3>
+                <div id="modal-content" class="text-gray-300 space-y-4">
+                    <div class="flex justify-center items-center h-32">
+                        <div class="loading-spinner"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -275,6 +289,9 @@
         const modal = document.getElementById('gemini-modal');
         const modalTitle = document.getElementById('modal-title');
         const modalContent = document.getElementById('modal-content');
+        let quizData = [];
+        let currentQuestionIndex = 0;
+        let score = 0;
 
         function showModal() {
             modal.style.display = 'flex';
@@ -315,6 +332,120 @@
                 console.error("API call failed:", error);
             }
         }
+        
+        async function startQuiz() {
+            modalTitle.innerText = "Generando Quiz...";
+            modalContent.innerHTML = `<div class="flex justify-center items-center h-32"><div class="loading-spinner"></div></div>`;
+            showModal();
+
+            const prompt = `Basado en la información sobre Elon Musk, Tesla, SpaceX, tendencias tecnológicas (IA, Big Data, IoT) y ética tecnológica, crea un quiz de 5 preguntas de opción múltiple. Cada pregunta debe tener 5 opciones.`;
+            const payload = {
+                contents: [{ role: "user", parts: [{ text: prompt }] }],
+                generationConfig: {
+                    responseMimeType: "application/json",
+                    responseSchema: {
+                        type: "OBJECT",
+                        properties: {
+                            "questions": {
+                                type: "ARRAY",
+                                items: {
+                                    type: "OBJECT",
+                                    properties: {
+                                        "question": { "type": "STRING" },
+                                        "options": { "type": "ARRAY", "items": { "type": "STRING" } },
+                                        "correctAnswerIndex": { "type": "INTEGER" }
+                                    },
+                                    required: ["question", "options", "correctAnswerIndex"]
+                                }
+                            }
+                        },
+                        required: ["questions"]
+                    }
+                }
+            };
+            const apiKey = "";
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+            try {
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                const result = await response.json();
+                if (result.candidates && result.candidates[0].content && result.candidates[0].content.parts[0].text) {
+                    const jsonText = result.candidates[0].content.parts[0].text;
+                    const parsedJson = JSON.parse(jsonText);
+                    quizData = parsedJson.questions;
+                    currentQuestionIndex = 0;
+                    score = 0;
+                    displayQuestion();
+                } else {
+                     modalContent.innerText = "No se pudo generar el quiz. Por favor, inténtalo de nuevo.";
+                }
+            } catch (error) {
+                modalContent.innerText = "Error al generar el quiz. Revisa la consola.";
+                console.error("Quiz generation failed:", error);
+            }
+        }
+
+        function displayQuestion() {
+            if (currentQuestionIndex < quizData.length) {
+                const questionData = quizData[currentQuestionIndex];
+                modalTitle.innerText = `Pregunta ${currentQuestionIndex + 1}/${quizData.length}`;
+                let optionsHtml = questionData.options.map((option, index) => 
+                    `<button onclick="checkAnswer(${index})" class="w-full text-left p-3 bg-blue-500/20 hover:bg-blue-500/40 rounded transition-colors option-btn">${option}</button>`
+                ).join('');
+                modalContent.innerHTML = `
+                    <p class="text-lg mb-4">${questionData.question}</p>
+                    <div class="space-y-3">${optionsHtml}</div>
+                    <div id="feedback" class="mt-4 text-center"></div>
+                `;
+            } else {
+                showResults();
+            }
+        }
+
+        function checkAnswer(selectedIndex) {
+            const questionData = quizData[currentQuestionIndex];
+            const feedbackEl = document.getElementById('feedback');
+            const optionButtons = document.querySelectorAll('.option-btn');
+            
+            optionButtons.forEach(button => button.disabled = true);
+
+            if (selectedIndex === questionData.correctAnswerIndex) {
+                score++;
+                optionButtons[selectedIndex].classList.remove('bg-blue-500/20');
+                optionButtons[selectedIndex].classList.add('bg-green-500/50');
+                feedbackEl.innerHTML = `<p class="text-green-400 font-bold">¡Correcto!</p>`;
+            } else {
+                optionButtons[selectedIndex].classList.remove('bg-blue-500/20');
+                optionButtons[selectedIndex].classList.add('bg-red-500/50');
+                optionButtons[questionData.correctAnswerIndex].classList.add('bg-green-500/50');
+                feedbackEl.innerHTML = `<p class="text-red-400 font-bold">Incorrecto.</p>`;
+            }
+
+            setTimeout(() => {
+                currentQuestionIndex++;
+                displayQuestion();
+            }, 1500);
+        }
+
+        function showResults() {
+            modalTitle.innerText = "Resultados del Quiz";
+            modalContent.innerHTML = `
+                <div class="text-center">
+                    <p class="text-2xl">Tu puntuación final es:</p>
+                    <p class="text-5xl font-bold my-4" style="color: #3A86FF;">${score} / ${quizData.length}</p>
+                    <button onclick="startQuiz()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition-colors mt-4">
+                        Intentar de Nuevo
+                    </button>
+                    <button onclick="closeModal()" class="bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-lg transition-colors mt-4 ml-2">
+                        Cerrar
+                    </button>
+                </div>
+            `;
+        }
 
         function generateLearningPath(skill) {
             modalTitle.innerText = `Ruta de Aprendizaje: ${skill}`;
@@ -327,7 +458,6 @@
             const prompt = `Actúa como un filósofo de la tecnología. Genera un breve y provocador escenario de dilema ético relacionado con '${topic}'. El escenario debe presentar una decisión difícil sin una respuesta fácil. No ofrezcas una solución, solo presenta el dilema de forma clara y concisa en menos de 120 palabras.`;
             callGeminiAPI(prompt);
         }
-
 
         function wrapText(text, maxWidth) {
             const words = text.split(' ');
